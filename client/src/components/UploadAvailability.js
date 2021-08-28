@@ -43,6 +43,16 @@ const UploadAvailability = () => {
           <h1 className='title'>Upload Availability CSV</h1>
         </div>
       </section>
+      <section className='section py-0'>
+        <div className='container'>
+          <p className='mb-2'>The expected CSV format is as follows:</p>
+          <pre>
+            name,date,startTime,endTime
+            <br />
+            name,date,startTime,endTime
+          </pre>
+        </div>
+      </section>
       <section className='section is-medium'>
         <div className='container'>
           <div className='file has-name is-fullwidth'>

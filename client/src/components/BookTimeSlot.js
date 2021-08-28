@@ -2,6 +2,11 @@ import React, {useState, useEffect} from 'react'
 import {getProviderAvailability} from '../API'
 import {Link} from 'react-router-dom'
 
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr)
+  return date.toDateString()
+}
+
 const BookTimeSlot = () => {
   const [providers, setProviders] = useState()
   const [loading, setLoading] = useState(true)
@@ -23,22 +28,13 @@ const BookTimeSlot = () => {
         <article className='panel is-info mb-5'>
           <p className='panel-heading'>{provider}</p>
           {providers[provider].map((timeSlot) => (
-            <p className='panel-block is-active'>
-              {timeSlot.date} | {timeSlot.startTime} - {timeSlot.endTime}
-            </p>
+            <div className='panel-block is-active'>
+              <span>{formatDate(timeSlot.date)}</span>
+              <span className='is-pulled-right'>
+                {timeSlot.startTime} - {timeSlot.endTime}
+              </span>
+            </div>
           ))}
-          {/* <a className='panel-block is-active'>
-            <span className='panel-icon'>
-              <i className='fas fa-book' aria-hidden='true'></i>
-            </span>
-            bulma
-          </a>
-          <a className='panel-block'>
-            <span className='panel-icon'>
-              <i className='fas fa-book' aria-hidden='true'></i>
-            </span>
-            marksheet
-          </a> */}
         </article>
       )
     }
@@ -59,7 +55,9 @@ const BookTimeSlot = () => {
         <div className='container is-flex is-flex-direction-column is-justify-content-center is-align-items-center'>
           {loading && <p>Loading provider schedules...</p>}
           {providers &&
-            createProviderList().map((provider) => <div>{provider}</div>)}
+            createProviderList().map((provider) => (
+              <div className='provider-container'>{provider}</div>
+            ))}
         </div>
       </section>
     </div>
