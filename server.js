@@ -39,10 +39,21 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+const isEmptyRecord = (record) => {
+  let isEmpty = true
+  record.forEach((column) => {
+    if (column !== '') {
+      isEmpty = false
+    }
+  })
+  return isEmpty
+}
+
 app.post('/availabilityUpload', upload.single('file'), async (req, res) => {
   const fileContent = await fs.readFile(req.file.path)
-  const records = parse(fileContent)
-  console.log(records)
+  let records = parse(fileContent, {skip_empty_lines: true, trim: true})
+  records = records.filter((record) => !isEmptyRecord(record))
+  console.log('records: ', records)
 
   try {
     await handleNewAvailability(records)

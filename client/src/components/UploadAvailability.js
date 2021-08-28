@@ -53,7 +53,7 @@ const UploadAvailability = () => {
           </pre>
         </div>
       </section>
-      <section className='section is-medium'>
+      <section className='section'>
         <div className='container'>
           <div className='file has-name is-fullwidth'>
             <label className='file-label'>

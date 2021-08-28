@@ -10,7 +10,6 @@ const handleNewAvailability = async (records) => {
       endTime: record[3],
     }
   })
-  console.log(JSON.stringify(recordObjs))
 
   const groupedByProvider = recordObjs.reduce((acc, cur) => {
     acc[cur.provider.trim()] = [
@@ -21,11 +20,8 @@ const handleNewAvailability = async (records) => {
         endTime: cur.endTime,
       },
     ]
-    console.log(acc)
     return acc
   }, {})
-
-  console.log(groupedByProvider)
 
   for (let provider in groupedByProvider) {
     const existingProvider = await Provider.findOne({
@@ -58,7 +54,6 @@ const saveTimeSlotsByProvider = async (provider, timeSlots) => {
 const getProviderAvailability = async (name) => {
   let payload = {}
   const providers = await Provider.find()
-  console.log('providers: ', providers)
 
   for (const provider of providers) {
     const timeSlots = await TimeSlot.find({providerId: provider._id})

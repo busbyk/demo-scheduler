@@ -27,8 +27,8 @@ const BookTimeSlot = () => {
       providerList.push(
         <article className='panel is-info mb-5'>
           <p className='panel-heading'>{provider}</p>
-          {providers[provider].map((timeSlot) => (
-            <div className='panel-block is-active'>
+          {providers[provider].map((timeSlot, idx) => (
+            <div className='panel-block is-active' key={idx}>
               <span>{formatDate(timeSlot.date)}</span>
               <span className='is-pulled-right'>
                 {timeSlot.startTime} - {timeSlot.endTime}
@@ -51,12 +51,14 @@ const BookTimeSlot = () => {
           <h1 className='title'>Provider Schedules</h1>
         </div>
       </section>
-      <section className='section is-medium'>
+      <section className='section pt-0'>
         <div className='container is-flex is-flex-direction-column is-justify-content-center is-align-items-center'>
           {loading && <p>Loading provider schedules...</p>}
           {providers &&
-            createProviderList().map((provider) => (
-              <div className='provider-container'>{provider}</div>
+            createProviderList().map((provider, idx) => (
+              <div className='provider-container' key={idx}>
+                {provider}
+              </div>
             ))}
         </div>
       </section>
