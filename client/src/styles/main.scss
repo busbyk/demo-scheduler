@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+@import '../node_modules/bulma/bulma';
+
+.divider {
+  border-bottom: 2px solid $grey;
+  border-radius: 1px;
+  width: 60%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}

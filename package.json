@@ -1,0 +1,44 @@
+{
+  "name": "demo-scheduler",
+  "version": "1.0.0",
+  "description": "A demo application using the MERN stack that takes in a csv file to store availability of providers and allows clients to book times to meet with them.",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js",
+    "server-prod": "export NODE_ENV=production && node server.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "install-all": "npm install && cd client && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/busbyk/demo-scheduler.git"
+  },
+  "author": "Kellen Busby Software",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/busbyk/demo-scheduler/issues"
+  },
+  "homepage": "https://github.com/busbyk/demo-scheduler#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bulma": "^0.9.3",
+    "concurrently": "^6.2.1",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "csv-parse": "^4.16.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.12",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0"
+  }
+}
